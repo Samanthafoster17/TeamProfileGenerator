@@ -10,53 +10,68 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const Choices = require("inquirer/lib/objects/choices");
-const employee = [];
+const Employee = require("./lib/Employee");
+const employees = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-function addTeamMember(){inquirer.prompt([{
-    type:"input",
-    name: "name",
-    message: "Enter team member's name"
-},
-{
-    type:"input",
-    name: "id",
-    message: "Enter team member's id"
-},
-{
-    type:"input",
-    name:"email",
-    message:"Enter team member's Email"
-},
-{
-    type:"list",
-    name: "role",
-    message: "Choose team member's role",
-    choices:["Engineer",
-             "Intern",
+function addTeamMember() {
+    inquirer.prompt([{
+        type: "input",
+        name: "name",
+        message: "Enter team member's name"
+    },
+    {
+        type: "input",
+        name: "id",
+        message: "Enter team member's id"
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "Enter team member's Email"
+    },
+    {
+        type: "list",
+        name: "role",
+        message: "Choose team member's role",
+        choices: ["Engineer",
+            "Intern",
             "Manager"],
-}
-]).then
-(function ({name, id, email, role}) {
-    let info = "";
-        if (role === "Engineer") {
-            info = "github username" 
-            
-        }
-        else if (role === "Intern") {
-            info = "school name"
-        }
-        else {
-            info = "office number"
-        }
-        inquirer.prompt({
-            type:"input",
-            name:"info",
-            message:`Enter team members ${info}`
+    }
+    ]).then
+        (function ({ name, id, email, role }) {
+            let info = "";
+            let employee;
+            if (role === "Engineer") {
+                info = "github username";
+                employee = new Engineer(name, id, email, info);
+
+            }
+            else if (role === "Intern") {
+                info = "school name";
+                employee = new Intern(name, id, email, info);
+            }
+            else {
+                info = "office number"
+                employee = new Manager(name, id, email, info);
+            }
+            inquirer.prompt({
+                type: "input",
+                name: "info",
+                message: `Enter team members ${info}`
+            }).then(
+                employees.push(employee));
+        }).then(function createTeam() {
+            if (!fs.existsSync(OUTPUT_DIR)) {
+                fs.mkdirSync(OUTPUT_DIR)
+            }
+            fs.writeFileSync(outputPath, render(employees), "utf-8");
         })
-    })
-}
+        }
+
+
+
 // render(employee);
 addTeamMember();
 // After the user has input all employees desired, call the `render` function (required
