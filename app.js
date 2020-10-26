@@ -39,40 +39,65 @@ function addTeamMember() {
             "Intern",
             "Manager"],
     }
-    ]).then
+    ])
+    .then
         (function ({ name, id, email, role }) {
-            let info = "";
-            let employee;
-            if (role === "Engineer") {
-                info = "github username";
-                employee = new Engineer(name, id, email, info);
-
-            }
-            else if (role === "Intern") {
-                info = "school name";
-                employee = new Intern(name, id, email, info);
-            }
-            else {
-                info = "office number"
-                employee = new Manager(name, id, email, info);
-            }
+           
+        if (role === "Manager") {
             inquirer.prompt({
-                type: "input",
-                name: "info",
-                message: `Enter team members ${info}`
-            }).then(
-                employees.push(employee));
-        }).then(function createTeam() {
-            if (!fs.existsSync(OUTPUT_DIR)) {
-                fs.mkdirSync(OUTPUT_DIR)
-            }
-            fs.writeFileSync(outputPath, render(employees), "utf-8");
-        })
-        }
+             type:"input",
+             name:"officeNumber",
+             message:"Enter manager's office number"
+         }).then(function({ officeNumber }) {
+             this.employee = new Manager(name, id, email, officeNumber);
+             employees.push(this.employee);
+         
+         }).then(function createTeam() {
+             if (!fs.existsSync(OUTPUT_DIR)) {
+                 fs.mkdirSync(OUTPUT_DIR)
+             }
+             fs.writeFileSync(outputPath, render(employees), "utf-8");
+         
+         })
+
+     } else if (role === "Engineer") {
+         inquirer.prompt({
+             type:"input",
+             name:"github",
+             message:"Enter engineer's github username"
+         }).then(function({ github }) {
+             this.employee = new Engineer(name, id, email, github);
+             employees.push(this.employee);
+         
+         }).then(function createTeam() {
+             if (!fs.existsSync(OUTPUT_DIR)) {
+                 fs.mkdirSync(OUTPUT_DIR)
+             }
+             fs.writeFileSync(outputPath, render(employees), "utf-8");
+         
+         })
+     } else if (role === "Intern") {
+         inquirer.prompt({
+             type:"input",
+             name:"school",
+             message:"Enter intern's school name"
+         }).then(function({ school }) {
+             this.employee = new Intern(name, id, email, school);
+             employees.push(this.employee);
+         }).then(function createTeam() {
+             if (!fs.existsSync(OUTPUT_DIR)) {
+                 fs.mkdirSync(OUTPUT_DIR)
+             }
+             fs.writeFileSync(outputPath, render(employees), "utf-8");
+         
+         })
+     }
+ })
+
+   
+}
 
 
-
-// render(employee);
 addTeamMember();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
