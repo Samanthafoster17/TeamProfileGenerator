@@ -40,22 +40,22 @@ async function memberRole(){
         inquirer.prompt([{
             type: "input",
             name: "name",
-            message: "Enter manager name"
+            message: "Enter manager's first name"
         },
         {
             type: "input",
             name: "id",
-            message: "Enter manager id"
+            message: "Enter manager's id"
         },
         {
             type: "input",
             name: "email",
-            message: "Enter manager E-mail"
+            message: "Enter manager's E-mail"
         },
         {
             type:"input",
             name:"officeNumber",
-            message:"Enter manager office number"
+            message:"Enter manager's office number"
         }
         ]).then(function ({name, id, email, officeNumber }) {
             this.employee = new Manager(name, id, email, officeNumber);
@@ -79,22 +79,22 @@ async function memberRole(){
         inquirer.prompt([{
             type: "input",
             name: "name",
-            message: "Enter intern name"
+            message: "Enter intern's first name"
         },
         {
             type: "input",
             name: "id",
-            message: "Enter intern id"
+            message: "Enter intern's id"
         },
         {
             type: "input",
             name: "email",
-            message: "Enter intern E-mail"
+            message: "Enter intern's E-mail"
         },
         {
             type:"input",
             name:"school",
-            message:"Enter intern school name"
+            message:"Enter intern's school name"
         }
         ]).then(function ({name, id, email, school }) {
             this.employee = new Intern(name, id, email, school);
@@ -118,22 +118,22 @@ async function memberRole(){
         inquirer.prompt([{
             type: "input",
             name: "name",
-            message: "Enter engineer name"
+            message: "Enter engineer's first name"
         },
         {
             type: "input",
             name: "id",
-            message: "Enter engineer id"
+            message: "Enter engineer's id"
         },
         {
             type: "input",
             name: "email",
-            message: "Enter engineer E-mail"
+            message: "Enter engineer's E-mail"
         },
         {
             type:"input",
             name:"github",
-            message:"Enter engineer github username"
+            message:"Enter engineer's github username"
         }
         ]).then(function ({name, id, email, github }) {
             this.employee = new Engineer(name, id, email, github);

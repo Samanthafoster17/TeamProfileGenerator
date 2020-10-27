@@ -1,0 +1,62 @@
+*{
+    box-sizing: border-box;
+}
+ 
+   
+body{
+    margin: 10px;
+    padding: 10px;
+   background-color:papayawhip;
+}
+.team-heading{
+    background-color:rgb(126, 17, 17);
+}
+h1{
+    font-size: 55px;
+    font-weight: bolder;
+    color:bisque;
+    text-shadow:  0 10px 10px black, 0 6px 6px black;
+}
+.card-header{ 
+    text-shadow: 0 10px 20px maroon, 0 6px 6px black;
+    color:bisque; 
+    height: 35%;
+    width: 100%;
+    background-color:maroon;
+
+}
+.team-area{
+    box-sizing: border-box;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+ul{
+    
+    color: red;
+    list-style-position: inside;
+    
+}  
+
+.employee-card {
+    background-color: whitesmoke;
+    flex:  5 5 250px;
+    box-sizing: border-box;
+    width: 200px;
+    height: 400px;
+    margin: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.23);
+ }
+
+ @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  } 
