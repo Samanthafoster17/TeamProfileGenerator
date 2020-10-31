@@ -4,13 +4,23 @@
  
    
 body{
-    margin: 10px;
-    padding: 10px;
+    margin: 100px;
+    padding: 50px;
    background-color:papayawhip;
 }
 .team-heading{
     background-color:rgb(126, 17, 17);
+    padding: 30px 0;
+    height: 130px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    transition: all 0.5s;
+    z-index: 997;
+    opacity: 85%;
 }
+
 h1{
     font-size: 55px;
     font-weight: bolder;

@@ -60,7 +60,7 @@ async function memberRole(){
         ]).then(function ({name, id, email, officeNumber }) {
             this.employee = new Manager(name, id, email, officeNumber);
             employees.push(this.employee);
-            console.log(employees);
+            console.log(employees, "has been added");
         }).then(function addAnother(){
             inquirer.prompt({
                 type:"confirm",
@@ -71,6 +71,8 @@ async function memberRole(){
                     memberRole();
                 }else{
                     createTeam();
+                    console.log("Your Team page is ready!");
+                    
                 }
             })
         })
@@ -99,7 +101,7 @@ async function memberRole(){
         ]).then(function ({name, id, email, school }) {
             this.employee = new Intern(name, id, email, school);
             employees.push(this.employee);
-            console.log(employees);
+            console.log(employees, "has been added");
         }).then(function addAnother(){
             inquirer.prompt({
                 type:"confirm",
@@ -110,6 +112,7 @@ async function memberRole(){
                     memberRole();
                 }else{
                     createTeam();
+                    console.log("Your Team page is ready!");
                 }
             })
         })
@@ -138,7 +141,7 @@ async function memberRole(){
         ]).then(function ({name, id, email, github }) {
             this.employee = new Engineer(name, id, email, github);
             employees.push(this.employee);
-            console.log(employees);
+            console.log(employees, "has been added");
         }).then(function addAnother(){
             inquirer.prompt({
                 type:"confirm",
@@ -149,6 +152,8 @@ async function memberRole(){
                     memberRole();
                 }else{
                     createTeam();
+                    console.log("Your Team page is ready!");
+                    
                 }
             })
         })
@@ -157,8 +162,7 @@ async function memberRole(){
         if (!fs.existsSync(OUTPUT_DIR)) {
             fs.mkdirSync(OUTPUT_DIR)
         }
-        fs.writeFileSync(outputPath, render(employees), "utf-8");
-    
+        fs.writeFileSync(outputPath, render(employees), "utf-8")
     }
     
 
