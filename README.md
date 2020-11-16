@@ -43,9 +43,9 @@ You may view GitHub profile here:
 -[Github Profile](https://github.com/Samanthafoster17).
 
 
-##Image of application
+## Image of application
 ![image](https://user-images.githubusercontent.com/68489432/97785597-4efc8a00-1b7c-11eb-8968-16a0bf62f6f3.png)
 ![image](https://user-images.githubusercontent.com/68489432/97785606-56bc2e80-1b7c-11eb-8993-f37d2bd032e1.png)
 
-##Link to video preview
+## Link to video preview
 https://drive.google.com/file/d/1O9pUkSPvoIHZVVVmX3o4-mmy5LUF66C8/view
